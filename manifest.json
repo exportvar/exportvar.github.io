@@ -1,6 +1,6 @@
 {
-    "name": "export_var_ui_fl",
-    "short_name": "export_var_ui_fl",
+    "name": "variables_ultra_ui",
+    "short_name": "variables_ultra_ui",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

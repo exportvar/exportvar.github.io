@@ -1,0 +1,24 @@
+// noinspection JSUnresolvedReference
+
+{{flutter_js}}
+{{flutter_build_config}}
+const serviceWorkerVersion = '{{flutter_service_worker_version}}'.replaceAll('\"', '');
+console.log(serviceWorkerVersion);
+
+_flutter.loader.loadEntrypoint({
+    entrypointUrl: 'http://localhost:8000/main.dart.js',
+    serviceWorker: {
+        serviceWorkerUrl: 'http://localhost:8000/flutter_service_worker.js?v=',
+        serviceWorkerVersion: serviceWorkerVersion,
+    },
+    onEntrypointLoaded: async function(engineInitializer) {
+        const appRunner = await engineInitializer.initializeEngine({
+            hostElement: document.getElementById('app'),
+            assetBase: 'http://localhost:8000/',
+            canvasKitBaseUrl: 'http://localhost:8000/canvaskit/',
+            renderer: 'canvaskit',
+        });
+
+        await appRunner.runApp();
+    }
+});
